@@ -7,27 +7,41 @@
     </div>
 </template>
 
-<script lang="js">
-    export default({
-        name:'Types',
-        props:['xxx'],
-        data(){
-            return{
-                type:'-'     // '-'代表支出，'+'代表收入
+<script lang="ts">
+    import Vue from 'vue';
+    import { Component } from 'vue-property-decorator';
+
+    @Component
+    export default class Types extends Vue{
+        type = '-';     // '-'代表支出，'+'代表收入
+        selectType(type:string){     // type 只能是 '-' 和 '+'
+            if(type !== '-' && type !== '+'){
+                throw new Error('type is unknown');
             }
-        },
-        mounted(){
-            console.log(this.xxx);
-        },
-        methods:{
-            selectType(type){     // type 只能是 '-' 和 '+'
-                if(type !== '-' && type !== '+'){
-                    throw new Error('type is unknown');
-                }
-                this.type = type;
-            }
+            this.type = type;
         }
-    })
+    }
+
+    // export default{
+    //     name:'Types',
+    //     props:['xxx'],
+    //     data(){
+    //         return{
+    //             type:'-'     // '-'代表支出，'+'代表收入
+    //         }
+    //     },
+    //     mounted(){
+    //         console.log(this.xxx);
+    //     },
+    //     methods:{
+    //         selectType(type){     // type 只能是 '-' 和 '+'
+    //             if(type !== '-' && type !== '+'){
+    //                 throw new Error('type is unknown');
+    //             }
+    //             this.type = type;
+    //         }
+    //     }
+    // }
 </script>
 
 <style lang="scss" scoped>
