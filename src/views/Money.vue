@@ -15,11 +15,14 @@
     import Tags from '@/components/Money/Tags.vue';
     import { Component, Watch } from 'vue-property-decorator';
 
+    const recordList:Record[] = JSON.parse(localStorage.getItem('recordList') || '[]');
+
     type Record = {
         tags:string[];
         notes:string;
         type:string;
-        amount:number
+        amount:number;
+        createdAt?:Date;   // ? 表示 createAt 可以不存在
     }
 
     @Component({
@@ -27,7 +30,7 @@
     })
     export default class Money extends Vue {
         tags = ['衣','食','住','行','投资'];
-        recordList:Record[]=[];
+        recordList:Record[] = recordList;
         record:Record = {tags: [], notes: '', type: '-', amount: 0};
 
         onUpdateTags(value:string[]){
@@ -37,9 +40,9 @@
             this.record.notes = value;
         }
         saveRecord(){
-            const record2 = JSON.parse(JSON.stringify(this.record));
+            const record2:Record = JSON.parse(JSON.stringify(this.record));
+            record2.createdAt = new Date();
             this.recordList.push(record2);
-            console.log(this.recordList)
         }
         @Watch('recordList')
         onRecordListChange(){
