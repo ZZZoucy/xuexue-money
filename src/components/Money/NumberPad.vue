@@ -5,11 +5,11 @@
             <button @click="inputContent">1</button>
             <button @click="inputContent">2</button>
             <button @click="inputContent">3</button>
-            <button @click="remove">删除</button>
+            <button @click="remove"><Icon class="delete" name="delete"/></button>
             <button @click="inputContent">4</button>
             <button @click="inputContent">5</button>
             <button @click="inputContent">6</button>
-            <button @click="clear">清空</button>
+            <button @click="clear">清零</button>
             <button @click="inputContent">7</button>
             <button @click="inputContent">8</button>
             <button @click="inputContent">9</button>
@@ -110,6 +110,9 @@
                 }
                 &:nth-child(12){
                     background: darken($bg,6*4%);
+                }
+                .delete{
+                    width: 24px;
                 }
             }
         }
