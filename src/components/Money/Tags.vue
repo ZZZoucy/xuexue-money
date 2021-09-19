@@ -1,7 +1,7 @@
 <template>
     <div class="tags">
         <div class="new">
-            <button @click="create">新增标签</button>
+            <button @click="createTag">新增标签</button>
         </div>
         <ul class="current">
             <li v-for="tag in tagList" :key="tag.id" @click="toggle(tag)"
@@ -11,7 +11,9 @@
 </template>
 
 <script lang="ts">
+    import TagHelper from '@/mixins/tagHelper';
     import Vue from 'vue';
+    import { mixins } from 'vue-class-component';
     import { Component } from 'vue-property-decorator';
 
     @Component({
@@ -21,7 +23,7 @@
             }
         }
     })
-    export default class Tags extends Vue{
+    export default class Tags extends mixins(TagHelper){
         selectedTags:string[] = [];
 
         created(){
