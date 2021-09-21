@@ -1,9 +1,15 @@
+type RootState = {
+    recordList: RecordItem[],
+    tagList: Tag[],
+    currentTag?: Tag,
+}
+  
 type RecordItem = {
-    tags:string[];
-    notes:string;
-    type:string;
-    amount:number;
-    createdAt?:Date;   // ? 表示 createAt 可以不存在
+    tags: string[];
+    notes: string;
+    type: string;
+    amount: number;
+    createdAt?: string;   // ? 表示 createAt 可以不存在
 }
 
 interface Window{
