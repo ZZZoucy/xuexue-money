@@ -83,29 +83,23 @@
         .buttons{
             @extend %clearFix;
             > button{
-                width: 90px;
+                width: 25%;
                 height: 64px;
                 font-size: 24px;
                 display: float;
+                float: left;
                 background: transparent;
                 border: 1px solid #000;
                 background: #fff;
-                border-radius: 10px;
-                margin: 2px 3px 2px 0;
+                border-radius: 24px;
+                
                 &.ok{
-                    height: 132px;
+                    height: 128px;
                     background: #FFCC01;
+                    float: right;
                 }
                 &.zero{
-                    width: 46%;
-                }
-                &:nth-child(13){
-                    width: 184px;
-                }
-                &:nth-child(4),&:nth-child(8),&:nth-child(12){
-                    width: 95px;
-                    margin-right: 0;
-                    float: right;
+                    width: 25*2%;   
                 }
                 .delete{
                     width: 24px;
