@@ -26,3 +26,7 @@ window.onload = function (){
     window.scrollTo(0,200);
   },0);
 }
+
+if(document.documentElement.clientHeight){
+  window.alert('请使用手机打开本页面，以保证浏览效果');
+}

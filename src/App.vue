@@ -16,4 +16,9 @@
     font-family: $font-hei;
     background: #f9f9f9;
   }
+
+  #app{
+    max-height: 500px;
+    margin: 0 auto;
+  }
 </style>
