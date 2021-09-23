@@ -28,6 +28,8 @@
         display: flex;
         flex-direction: row; 
         font-size: 12px;
+        background: #fff;
+        color: #000;
         > .item{
             padding: 2px 0;
             width: 33.3333%;

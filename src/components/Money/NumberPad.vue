@@ -66,6 +66,7 @@
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     .numberPad{
+        background: #B7DCD3;
         .output{
             @extend %clearFix;
             @extend %innerShadow;
@@ -74,43 +75,37 @@
             padding: 9px 16px;
             text-align: right;
             height: 72px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            margin: 0 0 1px 0;
+            background: #fff;
         }
         .buttons{
             @extend %clearFix;
             > button{
-                width: 25%;
+                width: 90px;
                 height: 64px;
+                font-size: 24px;
                 display: float;
                 background: transparent;
-                border: none;
+                border: 1px solid #000;
+                background: #fff;
+                border-radius: 10px;
+                margin: 2px 3px 2px 0;
                 &.ok{
-                    float: right;
-                    height: 64*2px;
+                    height: 132px;
+                    background: #FFCC01;
                 }
                 &.zero{
-                    width: 25*2%;
+                    width: 46%;
                 }
-                $bg:#f2f2f2;
-                &:nth-child(1){
-                    background: $bg;
+                &:nth-child(13){
+                    width: 184px;
                 }
-                &:nth-child(2),&:nth-child(5){
-                    background: darken($bg,4%);
-                }
-                &:nth-child(3),&:nth-child(6),&:nth-child(9){
-                    background: darken($bg,2*4%);
-                }
-                &:nth-child(4),&:nth-child(7),&:nth-child(10){
-                    background: darken($bg,3*4%);
-                }
-                &:nth-child(8),&:nth-child(11),&:nth-child(13){
-                    background: darken($bg,4*4%);
-                }
-                &:nth-child(14){
-                    background: darken($bg,5*4%);
-                }
-                &:nth-child(12){
-                    background: darken($bg,6*4%);
+                &:nth-child(4),&:nth-child(8),&:nth-child(12){
+                    width: 95px;
+                    margin-right: 0;
+                    float: right;
                 }
                 .delete{
                     width: 24px;

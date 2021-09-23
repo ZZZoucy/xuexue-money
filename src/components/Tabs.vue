@@ -30,13 +30,15 @@
 
 <style lang="scss" scoped>
     .tabs {
-        background: #C4C4C4;
+        background: #B7DCD3;
         display: flex;
         text-align: center;
+        justify-content: center;
+        align-items: center;
         font-size: 24px;
             &-item {
-            width: 50%;
-            height: 64px;
+            width: 30%;
+            height: 58px;
             display: flex;
             justify-content: center;
             align-items: center;

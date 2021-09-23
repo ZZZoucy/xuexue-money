@@ -54,7 +54,7 @@
         }
     }
     .createTag{
-        background: #767676;
+        background: #66a596;
         color: white;
         border-radius: 4px;
         border: none;

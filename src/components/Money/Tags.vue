@@ -59,7 +59,7 @@
             display: flex;
             flex-wrap: wrap;
             > li{
-                $bg:#d9d9d9;
+                $bg:#B7DCD3;
                 background: $bg;
                 $h: 24px;
                 height: $h;
@@ -69,8 +69,8 @@
                 margin-right: 12px;
                 margin-top: 4px;
                 &.selected{
-                    background: darken($bg,50%);
-                    color: white;
+                    background: darken($bg,80%);
+                    color: $bg;
                 }
             }
         }
@@ -79,7 +79,7 @@
             button{
                 background: transparent;
                 border: none;
-                color: #999;
+                color: rgb(74, 74, 74);
                 border-bottom: 1px solid;
                 padding: 0 4px;
             }

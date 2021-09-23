@@ -95,12 +95,21 @@
     }
     ::v-deep {
         .type-tabs-item{
-            background: white;
-            &.selected{
-                background: #c4c4c4;
-                &::after{
-                    display: none;
-                }
+            background: #B7DCD3;
+            width: 30%;
+            height: 58px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            &.selected::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: #333;
             }
         }
         .interval-tabs-item{
@@ -119,6 +128,7 @@
     }
     .record {
         background: white;
+        border-bottom: 1px solid #eee;
         @extend %item;
     }
     .notes {
