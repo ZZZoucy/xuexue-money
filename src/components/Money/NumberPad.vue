@@ -70,11 +70,11 @@
         .output{
             @extend %clearFix;
             @extend %innerShadow;
-            font-size: 36px;
+            font-size: 32px;
             font-family: Consolas,monospace;
             padding: 9px 16px;
             text-align: right;
-            height: 72px;
+            height: 64px;
             border: 1px solid #000;
             border-radius: 10px;
             margin: 0 0 1px 0;
