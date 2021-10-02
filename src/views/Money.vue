@@ -35,7 +35,6 @@
       tags: [], notes: '', type: '-', amount: 0, createdAt:new Date().toISOString()
     };
     created() {
-      this.$store.commit('fetchRecords');
     }
     onUpdateNotes(value: string) {
       this.record.notes = value;

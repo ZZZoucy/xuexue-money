@@ -191,7 +191,7 @@
                 position: absolute;
                 width: 100%;
                 height: 32px;
-                background: #B7DCD3;
+                background: rgba(116, 191, 170, 0.3);
                 color: #fff;
                 border-radius: 8px;
                 z-index: -1;
