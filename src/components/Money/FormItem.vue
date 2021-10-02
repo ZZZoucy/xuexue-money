@@ -3,16 +3,17 @@
         <label class="formItem">
             <span class="name">{{this.fieldName}} </span>   
             <template v-if="type === 'date'">
-                <input :type="type || 'text'" 
+                <input class="date" :type="type || 'text'" 
                     :value="x(value)" 
                     @input="onValueChange($event.target.value)" 
                     :placeholder="this.placeholder">
             </template>    
             <template v-else>
-                <input :type="type || 'text'" 
+                <input class="notes" :type="type || 'text'" 
                     :value="value" 
                     @input="onValueChange($event.target.value)" 
                     :placeholder="this.placeholder">
+                <div></div>
             </template>      
         </label>
     </div>
@@ -46,15 +47,29 @@ import Vue from 'vue';
         padding-left: 16px;
         display: flex;
         align-items: center;
+        margin-top: 5px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e6e6e6;
         .name{
             padding-right: 16px;
+            font-weight: bold;
         }
         input{
-            height: 40px;
             flex-grow: 1;
             background: transparent;
-            border: none;
-            padding-right: 16px;
+            &.notes{
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                height: 30px;
+                margin-right: 16px;
+            }
+            &.date{
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                height: 30px;
+                margin-right: 16px;
+                margin-top: 5px;
+            }
         }
     }
 </style>

@@ -55,6 +55,8 @@
         padding: 16px;
         display: flex;
         flex-direction: column-reverse;
+        height: 50px;
+        overflow: auto;
         > .current{
             display: flex;
             flex-wrap: wrap;

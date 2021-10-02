@@ -30,27 +30,32 @@
 
 <style lang="scss" scoped>
     .tabs {
-        background: #B7DCD3;
+        background: #f4f4f4;
         display: flex;
         text-align: center;
         justify-content: center;
         align-items: center;
-        font-size: 24px;
-            &-item {
+        font-size: 20px;
+        height: 54px;
+        &-item {
+            border-radius: 8px;
+            background: rgb(232, 231, 231);
             width: 30%;
-            height: 58px;
+            height: 32px;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            z-index: 1;
             &.selected::after {
                 content: '';
                 position: absolute;
-                bottom: 0;
-                left: 0;
                 width: 100%;
-                height: 4px;
-                background: #333;
+                height: 32px;
+                background: #B7DCD3;
+                color: #fff;
+                border-radius: 8px;
+                z-index: -1;
             }
         }
     }

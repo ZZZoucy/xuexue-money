@@ -72,9 +72,9 @@
             @extend %innerShadow;
             font-size: 32px;
             font-family: Consolas,monospace;
-            padding: 9px 16px;
+            padding: 5px 16px;
             text-align: right;
-            height: 64px;
+            height: 56px;
             border: 1px solid #000;
             border-radius: 10px;
             margin: 0 0 1px 0;

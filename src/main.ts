@@ -28,5 +28,5 @@ window.onload = function (){
 }
 
 if(document.documentElement.clientHeight){
-  window.alert('请使用手机打开本页面，以保证浏览效果');
+  //window.alert('请使用手机打开本页面，以保证浏览效果');
 }
