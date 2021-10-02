@@ -46,15 +46,18 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            z-index: 1;
             &.selected::after {
                 content: '';
                 position: absolute;
                 width: 100%;
                 height: 32px;
-                background: rgba(116, 191, 170, 0.3);
-                color: #000;
+                top: 0;
+                left: 0;
+                background: #B7DCD3;
+                color: #fff;
                 border-radius: 8px;
-                
+                z-index: -1;
             }
         }
     }
