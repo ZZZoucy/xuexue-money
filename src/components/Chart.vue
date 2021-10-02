@@ -26,7 +26,7 @@
 
 <style lang="scss">
     .wrapper{
-        height:350px;
+        height:280px;
         border-bottom: 1px solid #e6e6e6;
     }
 </style>

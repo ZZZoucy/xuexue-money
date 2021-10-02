@@ -44,6 +44,14 @@
       if(!this.record.tags || this.record.tags.length === 0){
         return window.alert('请至少选择一个标签');
       }
+      if(this.record.amount === 0){
+        const result = window.confirm('金额为0，确定记账吗？');
+        if(result === true){
+          this.record.notes = '';
+        }else{
+          return;
+        }
+      }
       this.$store.commit('createRecord', this.record);
       if(this.$store.state.createRecordError === null){
         window.alert('已保存');
