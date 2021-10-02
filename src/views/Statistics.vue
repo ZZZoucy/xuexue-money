@@ -106,12 +106,12 @@
                 },
                 yAxis: {
                     type: 'value',
-                    show: false
+                    show: false,
                 },
                 series: [{
                     symbol: 'circle',
                     symbolSize: 12,
-                    itemStyle: {borderWidth: 1, color: '#666', borderColor: '#666'},
+                    itemStyle: {borderWidth: 1, color: '#66a596', borderColor: '#66a596'},
                     // lineStyle: {width: 10},
                     data: values,
                     type: 'line'
