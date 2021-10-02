@@ -30,7 +30,7 @@ window.onload = function (){
 if(document.documentElement.clientHeight){
   window.alert('请使用手机打开本页面，以保证浏览效果');
   const img = document.createElement('img');
-  img.src = '../public/二维码.png';
+  img.src = './assets/二维码.png';
   img.style.position = 'fixed';
   img.style.left = '50%';
   img.style.top = '50%';
