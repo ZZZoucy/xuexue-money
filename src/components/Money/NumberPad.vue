@@ -26,11 +26,16 @@
 
     @Component
     export default class NumberPad extends Vue{
+        // @Prop() 就是告诉 Vue，这里不是 data，是 prop
+        // @Prop() 的括号是 Number 告诉 Vue：value 运行时是个 Number
+        // 后面的 number 是告诉 Vue：value 编译时是个 Number
         @Prop(Number) readonly value!:number;
         output = this.value.toString();
 
+        // 如果调用函数的时候不传参数，那么 Vue 会自动传 event，event 指跟这个事件相关的所有信息
         inputContent(event:MouseEvent){
-            const button = (event.target as HTMLButtonElement);
+            // 强制指定类型 —— event.target 为 HTML按钮元素
+            const button = (event.target as HTMLButtonElement); 
             const input = button.textContent as string;
             if(this.output.length === 16){return;}
             if(this.output === '0'){

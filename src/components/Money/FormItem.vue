@@ -21,10 +21,14 @@
 
 <script lang="ts">
     import dayjs from 'dayjs';
-import Vue from 'vue';
+    import Vue from 'vue';
+
+    // TS 从 vue-property-decorator 库中引入装饰器 @Component
+    // 那么导入内容的地方的 数据会自动转为 data，方法会自动转为 methods
     import { Component, Prop, Watch } from 'vue-property-decorator';
-    
     @Component
+
+    // TS 导入组件的写法，要写class，并且传入的参数都得声明类型
     export default class FormItem extends Vue{
         @Prop({default:''}) readonly value!: string;
 
@@ -32,6 +36,7 @@ import Vue from 'vue';
         @Prop() placeholder?: string;
         @Prop() type?: string;
 
+        // methods
         onValueChange(value:string){
             this.$emit('update:value',value);
         }
