@@ -1,16 +1,12 @@
 <template>
     <Layout>
+        <!-- 支出收入按钮 -->
         <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type" />
-        <div class="show_money">
-            <span class="titleWrapper">
-                <Icon name="chart" />
-                支出和收入
-            </span>
-        </div>
-        <div class="chart-wrapper" ref="chartWrapper">
-            <Chart class="chart" :options="chartOptions" />
-        </div>
-        <!-- <ol v-if="groupedList.length > 0">
+        <section class="icon_div" v-if="groupedList.length === 0">
+            <Icon name="none" />
+            <money-key />
+        </section>
+        <ol v-if="groupedList.length !== 0">
             <li v-for="(group, index) in groupedList" :key="index">
                 <h3 class="title">
                     {{ beautify(group.title) }} <span>￥{{ group.total }}</span>
@@ -23,51 +19,53 @@
                     </li>
                 </ol>
             </li>
-        </ol> -->
-        <!-- <div v-else class="noResult">
-            目前没有相关记录
-        </div> -->
+        </ol>
     </Layout>
 </template>
 
 <script lang="ts">
+import TypeSection from "@/components/common/TypeSection/TypeSection.vue";
+import CategorySection from "@/views/Home/childComps/Money/CategorySection.vue";
+import MoneyKey from "@/components/common/MoneyKey/MoneyKey.vue";
+import day from "dayjs";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 import Tabs from "@/components/Tabs.vue";
 import recordTypeList from "@/constants/recordTypeList";
 import dayjs from "dayjs";
 import clone from "@/lib/clone";
-import Chart from "@/components/Chart.vue";
 import _ from "lodash";
-import day from "dayjs";
 
 @Component({
-    components: { Tabs, Chart },
+    components: { TypeSection, Tabs, MoneyKey },
 })
-export default class Statistic extends Vue {
-    // tagString(tags: Tag[]) {
-    //     return tags.length === 0 ? "无" : tags.map((t) => t.name).join("，");
-    // }
-    mounted() {
-        const div = this.$refs.chartWrapper as HTMLDivElement;
-        div.scrollLeft = div.scrollWidth;
+export default class Detail extends Vue {
+    getCategory(category: string) {
+        this.category = category;
     }
-
-    // beautify(string: string) {
-    //     const day = dayjs(string);
-    //     const now = dayjs();
-    //     if (day.isSame(now, "day")) {
-    //         return "今天";
-    //     } else if (day.isSame(now.subtract(1, "day"), "day")) {
-    //         return "昨天";
-    //     } else if (day.isSame(now.subtract(2, "day"), "day")) {
-    //         return "前天";
-    //     } else if (day.isSame(now, "year")) {
-    //         return day.format("M月D日");
-    //     } else {
-    //         return day.format("YYYY年M月D日");
-    //     }
+    tagString(tags: Tag[]) {
+        return tags.length === 0 ? "无" : tags.map((t) => t.name).join("，");
+    }
+    // mounted() {
+    //     const div = this.$refs.chartWrapper as HTMLDivElement;
+    //     div.scrollLeft = div.scrollWidth;
     // }
+
+    beautify(string: string) {
+        const day = dayjs(string);
+        const now = dayjs();
+        if (day.isSame(now, "day")) {
+            return "今天";
+        } else if (day.isSame(now.subtract(1, "day"), "day")) {
+            return "昨天";
+        } else if (day.isSame(now.subtract(2, "day"), "day")) {
+            return "前天";
+        } else if (day.isSame(now, "year")) {
+            return day.format("M月D日");
+        } else {
+            return day.format("YYYY年M月D日");
+        }
+    }
 
     get keyValueList() {
         const today = new Date();
@@ -95,47 +93,6 @@ export default class Statistic extends Vue {
             }
         });
         return array;
-    }
-    get chartOptions() {
-        const keys = this.keyValueList.map((item) => item.key);
-        const values = this.keyValueList.map((item) => item.value);
-        return {
-            grid: {
-                left: 0,
-                right: 0,
-            },
-            xAxis: {
-                type: "category",
-                data: keys,
-                axisTick: { alignWithLabel: true },
-                axisLine: { lineStyle: { color: "#666" } },
-                axisLabel: {
-                    formatter: function(value: string, index: number) {
-                        return value.substr(5);
-                    },
-                },
-            },
-            yAxis: {
-                type: "value",
-                show: false,
-            },
-            series: [
-                {
-                    symbol: "circle",
-                    symbolSize: 12,
-                    itemStyle: { borderWidth: 1, color: "#66a596", borderColor: "#66a596" },
-                    // lineStyle: {width: 10},
-                    data: values,
-                    type: "line",
-                },
-            ],
-            tooltip: {
-                show: true,
-                triggerOn: "click",
-                position: "top",
-                formatter: "{c}",
-            },
-        };
     }
 
     get recordList() {
@@ -179,9 +136,31 @@ export default class Statistic extends Vue {
 </script>
 
 <style lang="scss" scoped>
-/* .noResult {
-    padding: 16px;
+.icon_div {
+    .icon {
+        width: 148px;
+        height: 148px;
+        position: relative;
+    }
+    margin-top: 80px;
+    padding: 20px;
     text-align: center;
+    font-size: 24px;
+}
+.btn {
+    padding: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #a1decf;
+    border-radius: 12px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 %item {
     padding: 8px 16px;
@@ -202,45 +181,5 @@ export default class Statistic extends Vue {
     margin-right: auto;
     margin-left: 16px;
     color: #999;
-} */
-.chart {
-    width: 430%;
-    &-wrapper {
-        overflow: auto;
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
-}
-.show_money {
-    margin: 32px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    span {
-        padding: 5px;
-        font-weight: 700;
-    }
-
-    .title {
-        color: #81b7aa;
-    }
-    .titleWrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        border-bottom: 5px solid #9ccac0;
-        font-size: 26px;
-        padding: 8px;
-        color: #9ccac0;
-        & .icon {
-            margin-right: 12px;
-            width: 38px;
-            height: 38px;
-            fill: #9ccac0;
-        }
-    }
 }
 </style>

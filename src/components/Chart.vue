@@ -3,30 +3,29 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-    import echarts, { EChartOption, ECharts } from 'echarts';
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import echarts, { EChartOption, ECharts } from "echarts";
 
-    @Component
-    export default class Chart extends Vue {
-        @Prop() options?: EChartOption;
-        chart?: ECharts;
-        mounted(){
-            if(this.options === undefined){
-                return console.error('options 为空');
-            }
-            this.chart = echarts.init(this.$refs.wrapper as HTMLDivElement);
-            this.chart.setOption(this.options);
+@Component
+export default class Chart extends Vue {
+    @Prop() options?: EChartOption;
+    chart?: ECharts;
+    mounted() {
+        if (this.options === undefined) {
+            return console.error("options 为空");
         }
-        @Watch('options')
-        onOptionsChange(newValue:EChartOption){
-            this.chart!.setOption(newValue);
-        }
+        this.chart = echarts.init(this.$refs.wrapper as HTMLDivElement);
+        this.chart.setOption(this.options);
     }
+    @Watch("options")
+    onOptionsChange(newValue: EChartOption) {
+        this.chart!.setOption(newValue);
+    }
+}
 </script>
 
 <style lang="scss">
-    .wrapper{
-        height:280px;
-        border-bottom: 1px solid #e6e6e6;
-    }
+.wrapper {
+    height: 280px;
+}
 </style>
