@@ -1,25 +1,30 @@
 <template>
-    <Layout>
+    <Layout class="a">
         <!-- 支出收入按钮 -->
         <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type" />
         <section class="icon_div" v-if="groupedList.length === 0">
             <Icon name="none" />
             <money-key />
         </section>
-        <ol v-if="groupedList.length !== 0">
-            <li v-for="(group, index) in groupedList" :key="index">
-                <h3 class="title">
-                    {{ beautify(group.title) }} <span>￥{{ group.total }}</span>
-                </h3>
-                <ol>
-                    <li v-for="item in group.items" :key="item.id" class="record">
-                        <span>{{ tagString(item.tags) }}</span>
-                        <span class="notes">{{ item.notes }}</span>
-                        <span>￥{{ item.amount }} </span>
-                    </li>
-                </ol>
-            </li>
-        </ol>
+        <section class="jilu">
+            <ol v-if="groupedList.length !== 0">
+                <li v-for="(group, index) in groupedList" :key="index">
+                    <h3 class="title">
+                        {{ beautify(group.title) }} <span>￥{{ group.total }}</span>
+                    </h3>
+                    <ol>
+                        <li v-for="item in group.items" :key="item.id" class="record">
+                            <div class="zi">
+                                <span>{{ tagString(item.tags) }}</span>
+                                <span class="notes">{{ item.notes }}</span>
+                                <span class="notes" v-if="item.notes === ''">无备注</span>
+                            </div>
+                            <span class="qian">￥{{ item.amount }}</span>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </section>
     </Layout>
 </template>
 
@@ -136,6 +141,9 @@ export default class Detail extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.a {
+    background-color: #fefefe;
+}
 .icon_div {
     .icon {
         width: 148px;
@@ -163,7 +171,7 @@ export default class Detail extends Vue {
     transform: translate(-50%, -50%);
 }
 %item {
-    padding: 8px 16px;
+    padding: 4px 16px;
     line-height: 24px;
     display: flex;
     justify-content: space-between;
@@ -171,15 +179,67 @@ export default class Detail extends Vue {
 }
 .title {
     @extend %item;
+    color: #9ccac0;
+    font-weight: bold;
+    margin: 4px;
+    font-size: 20px;
 }
 .record {
-    background: white;
-    border-bottom: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9faf5;
+    margin: 6px 12px;
+    line-height: 32px;
+    font-size: 18px;
+    font-weight: bold;
     @extend %item;
+    .zi {
+        display: flex;
+        flex-direction: column;
+    }
+    .qian {
+        height: 64px;
+        line-height: 64px;
+        font-size: 20px;
+    }
 }
 .notes {
     margin-right: auto;
-    margin-left: 16px;
     color: #999;
+    font-size: 16px;
+    font-weight: normal;
+}
+.jilu {
+    overflow-y: auto;
+    height: 600px;
+    margin-top: 20px;
+}
+.jilu::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-height: 800px) {
+    .jilu {
+        overflow-y: auto;
+        height: 570px;
+        margin-top: 20px;
+    }
+    .jilu::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-height: 700px) {
+    .jilu {
+        overflow-y: auto;
+        height: 500px;
+        margin-top: 20px;
+    }
+}
+@media (max-height: 600px) {
+    .jilu {
+        overflow-y: auto;
+        height: 400px;
+        margin-top: 20px;
+    }
 }
 </style>
