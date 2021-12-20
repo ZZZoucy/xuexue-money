@@ -46,9 +46,9 @@ import _ from "lodash";
     components: { TypeSection, Tabs, MoneyKey },
 })
 export default class Detail extends Vue {
-    getCategory(category: string) {
-        this.category = category;
-    }
+    // getCategory(category: string) {
+    //     this.category = category;
+    // }
     tagString(tags: Tag[]) {
         return tags.length === 0 ? "无" : tags.map((t) => t.name).join("，");
     }

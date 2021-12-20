@@ -14,44 +14,6 @@ const store = new Vuex.Store({
         tagList: [] as Tag[],
         currentTag: undefined,
     } as RootState,
-    getters:{
-        // 获取 支出的标签
-        expenses: (state) => {
-            return state.recordList.filter(item => item.type === '-');
-        },
-        // 获取 本月支出的金额
-        expensesMoney: () => (today: string) => {
-            const mouthExpenses = (store.getters.expenses as RecordItem[])
-                .filter(item => day(item.createdAt).format('DD') === today);
-            return mouthExpenses.map(item => item.amount);
-        },
-        // 获取当日的总收入或总支出
-        dayTotalList: (state) => (type: string) => {
-        // 日期从大到小排
-        const newList = [...state.recordList]
-                .filter(r => r.category === type)
-                .sort((a, b) => day(b.createdAt).valueOf() - day(a.createdAt).valueOf());
-        if (newList.length === 0) {return [];}
-
-        type Result = { title: string; total?: number; items: RecordItem[] }[]
-        const result: Result = [{title: day(newList[0].createdAt).format('MM/DD'), items: [newList[0]]}];
-        for (let i = 1; i < newList.length; i++) {
-            const current = newList[i];
-            const last = result[result.length - 1];
-            if (day(last.title).isSame(day(current.createdAt), 'day')) {
-            last.items.push(current);
-            } else {
-            result.push({title: day(current.createdAt).format('MM/DD'), items: [current]});
-            }
-        }
-        // 将金额相加
-        result.map(group =>
-                group.total = group.items.reduce((sum, item) => {
-                    return sum + item.amount;
-                }, 0));
-        return result;
-        }
-    },
     mutations: {
         setCurrentTag(state, id: string) {
             state.currentTag = state.tagList.filter((t) => t.id === id)[0];
