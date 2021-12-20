@@ -7,22 +7,6 @@
             <p class="me-name">Chayym</p>
         </header>
         <div class="chang">常用功能</div>
-        <!-- <main>
-            <router-link to="/statistics" class="me-statistics">
-                <div class="bill">
-                    <span>账单</span>
-                    <Icon name="right" />
-                </div>
-            </router-link>
-        </main>
-        <footer>
-            <router-link to="/labels">
-                <div class="me-tables">
-                    <span>标签管理</span>
-                    <Icon name="right" />
-                </div>
-            </router-link>
-        </footer> -->
         <main class="me-main">
             <ul class="me-ul">
                 <li>
@@ -44,13 +28,13 @@
                     </router-link>
                 </li>
                 <li>
-                    <a href="https://www.zhihu.com/people/tian-cai-z-70" target="_blank">
+                    <a href="https://www.zhihu.com/people/tian-cai-z-70">
                         <img height="50px" src="../assets/知乎.png"/>
                         <p>作者知乎</p>
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/ZZZoucy" target="_blank">
+                    <a href="https://github.com/ZZZoucy">
                         <img height="50px" src="../assets/github1.png"/>
                         <p>作者Github</p>
                     </a>
@@ -99,36 +83,6 @@ export default {};
     color: black;
     font-weight: bold;
 }
-.me-statistics {
-    width: 100%;
-    margin: 12px 0;
-    background-color: white;
-}
-.me-tables {
-    width: 100%;
-    margin: 12px 0;
-    background-color: white;
-}
-.me-statistics {
-    display: flex;
-    flex-direction: column;
-}
-.me-statistics .bill {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 32px;
-}
-.me-tables {
-    font-weight: bold;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 32px;
-}
-
 .me-main{
     /* border: 1px solid red; */
     width: 100%;
