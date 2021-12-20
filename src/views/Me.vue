@@ -12,20 +12,6 @@
                     <span>账单</span>
                     <Icon name="right" />
                 </div>
-                <div class="message">
-                    <ul>
-                        <li>收入</li>
-                        <li>¥0.0</li>
-                    </ul>
-                    <ul>
-                        <li>支出</li>
-                        <li>¥0.0</li>
-                    </ul>
-                    <ul>
-                        <li>结余</li>
-                        <li class="jieyu">¥0.0</li>
-                    </ul>
-                </div>
             </router-link>
         </main>
         <footer>
@@ -97,15 +83,9 @@ img{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 12px 32px;
+    margin: 10px 32px;
 }
-.me-statistics .message {
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 32px;
-    padding-bottom: 10px;
-}
+
 .me-tables {
     font-weight: bold;
     min-height: 44px;

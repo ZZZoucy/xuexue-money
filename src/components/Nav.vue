@@ -1,13 +1,5 @@
 <template>
     <nav>
-        <!-- <router-link to="/labels" class="item" active-class="selected">
-            <Icon name="label" />
-            标签
-        </router-link> -->
-        <!-- <router-link to="/home" class="item" active-class="selected">
-            <Icon name="home" />
-            今日
-        </router-link> -->
         <router-link to="/detail" class="item" active-class="selected">
             <Icon name="money" />
             明细
@@ -21,9 +13,9 @@
             <Icon name="jia" />
             <p>记一笔</p>
         </router-link>
-        <router-link to="/#" class="item" active-class="selected">
-            <Icon name="" />
-            xx
+        <router-link to="/community" class="item" active-class="selected">
+            <Icon name="community" />
+            社区
         </router-link>
         <router-link to="/me" class="item" active-class="selected">
             <Icon name="me" />
