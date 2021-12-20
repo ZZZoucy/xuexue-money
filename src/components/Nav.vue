@@ -1,16 +1,29 @@
 <template>
     <nav>
-        <router-link to="/labels" class="item" active-class="selected">
+        <!-- <router-link to="/labels" class="item" active-class="selected">
             <Icon name="label" />
             标签
-        </router-link>
+        </router-link> -->
+        <!-- <router-link to="/home" class="item" active-class="selected">
+            <Icon name="home" />
+            今日
+        </router-link> -->
         <router-link to="/detail" class="item" active-class="selected">
             <Icon name="money" />
-            记一笔
+            明细
         </router-link>
         <router-link to="/statistics" class="item" active-class="selected">
             <Icon name="statistics" />
-            统计
+            图表
+        </router-link>
+        <router-link to="/money" class="item write" active-class="selected">
+            <div></div>
+            <Icon name="jia" />
+            <p>记一笔</p>
+        </router-link>
+        <router-link to="/#" class="item" active-class="selected">
+            <Icon name="" />
+            xx
         </router-link>
         <router-link to="/me" class="item" active-class="selected">
             <Icon name="me" />
@@ -48,6 +61,42 @@ nav {
     }
     > .item.selected {
         color: $color-highlight;
+    }
+    .write{
+        position: relative;
+        .icon{
+            position: absolute;
+            top: -30%;
+            left: 25%;
+            background-color: #9ccac0;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            padding: 8px;
+        }
+        div{
+            position: absolute;
+            border: 1px solid ;
+            border-color: #ccc #ccc transparent #ccc;
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            top: -38%;
+            left: 19%;
+        }
+        div::after{
+            content:'';
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            width: 52px;
+            height: 49px;
+            top: 7%;
+        }
+        p{
+            position: absolute;
+            bottom: 6%;
+        }
     }
 }
 </style>

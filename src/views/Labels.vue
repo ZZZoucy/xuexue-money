@@ -1,5 +1,10 @@
 <template>
     <Layout>
+        <div class="navBar">
+            <Icon class="leftIcon" name="left" @click="goBack"/>
+            <sapn class="labels-header">标签管理</sapn>
+            <span class="rightIcon"/>
+        </div>
         <div class="tags">
             <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
                 <span>{{ tag.name }}</span>
@@ -30,6 +35,9 @@ export default class Labels extends mixins(TagHelper) {
     beforeCreate() {
         this.$store.commit("fetchTags");
     }
+    goBack(){
+        this.$router.back();
+    }
 }
 </script>
 
@@ -38,6 +46,7 @@ export default class Labels extends mixins(TagHelper) {
     background: white;
     font-size: 16px;
     padding-left: 16px;
+    margin-top: 16px;
     .tag {
         min-height: 44px;
         display: flex;
@@ -64,5 +73,30 @@ export default class Labels extends mixins(TagHelper) {
         padding: 16px;
         margin-top: 44-16px;
     }
+}
+.navBar{
+    text-align: center;
+    font-size: 22px;
+    padding: 12px 16px;
+    font-weight: bold;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    > .leftIcon{
+        width: 24px;
+        height: 24px;
+    }
+    > .rightIcon{
+        width: 24px;
+        height: 24px;
+    }
+}
+.labels-header{
+    height: 70px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 70px;
 }
 </style>

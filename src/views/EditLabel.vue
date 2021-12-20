@@ -55,12 +55,14 @@ export default class EditLabel extends Vue{
 <style lang="scss" scoped>
     .navBar{
         text-align: center;
-        font-size: 16px;
+        font-size: 22px;
         padding: 12px 16px;
+        font-weight: bold;
         background: white;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        height: 70px;
         > .leftIcon{
             width: 24px;
             height: 24px;
@@ -72,12 +74,12 @@ export default class EditLabel extends Vue{
     }
     .form-wrapper{
         background: white;
-        margin-top: 8px;
+        margin-top: 16px;
     }
     .button-wrapper {
         text-align: center;
         padding: 16px;
-        margin-top: 44-16px;
+        margin-top: 28px;
     }
     
 </style>

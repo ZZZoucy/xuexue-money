@@ -1,8 +1,10 @@
 <template>
     <layout>
         <header class="me-header">
-            <div class="me-avatar" @click=""></div>
-            <p class="me-name">昵称</p>
+            <div class="me-avatar">
+                <img src="../assets/avatar.jpg">
+            </div>
+            <p class="me-name">Chayym</p>
         </header>
         <main>
             <router-link to="/statistics" class="me-statistics">
@@ -29,7 +31,7 @@
         <footer>
             <router-link to="/labels">
                 <div class="me-tables">
-                    <span>标签</span>
+                    <span>标签管理</span>
                     <Icon name="right" />
                 </div>
             </router-link>
@@ -52,9 +54,18 @@ export default {};
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    border: 2px solid white;
+    outline: 2px solid white;
     position: absolute;
     top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

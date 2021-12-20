@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="money-link">
-            <router-link to="/detail/money">记一笔</router-link>
+            <router-link to="/money">记一笔</router-link>
         </div>
         <router-view />
     </div>

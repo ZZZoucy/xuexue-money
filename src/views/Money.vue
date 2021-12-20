@@ -1,9 +1,9 @@
 <template>
-    <div class-prefix="layout">
+    <div class="d" class-prefix="layout">
         <div class="money-header">
-            <router-link to="/detail">
+            <div @click="backOne">
                 <Icon name="back" class="back" />
-            </router-link>
+            </div>
             <!-- Tabs是支出与收入按钮 -->
             <Tabs class="x" :data-source="recordTypeList" :value.sync="record.type" />
         </div>
@@ -42,6 +42,9 @@ export default class Money extends Vue {
         amount: 0,
         createdAt: new Date().toISOString(),
     };
+    backOne() {
+        this.$router.go(-1);
+    }
     created() {}
     onUpdateNotes(value: string) {
         this.record.notes = value;
@@ -70,6 +73,11 @@ export default class Money extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.d {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .money-header {
     position: relative;
 }

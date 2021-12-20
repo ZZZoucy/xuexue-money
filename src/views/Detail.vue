@@ -1,7 +1,7 @@
 <template>
-    <Layout class="a">
+    <div class="a">
         <!-- 支出收入按钮 -->
-        <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type" />
+        <Tabs class="tabs" class-prefix="type" :data-source="recordTypeList" :value.sync="type" />
         <section class="icon_div" v-if="groupedList.length === 0">
             <Icon name="none" />
             <money-key />
@@ -25,7 +25,8 @@
                 </li>
             </ol>
         </section>
-    </Layout>
+        <Nav class="nav"></Nav>
+    </div>
 </template>
 
 <script lang="ts">
@@ -143,6 +144,23 @@ export default class Detail extends Vue {
 <style lang="scss" scoped>
 .a {
     background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.tabs {
+    height: 70px;
+}
+.nav {
+    height: 54px;
+}
+.jilu {
+    overflow-y: auto;
+    flex: 1;
+    margin: 10px 0;
+}
+.jilu::-webkit-scrollbar {
+    display: none;
 }
 .icon_div {
     .icon {
@@ -207,39 +225,5 @@ export default class Detail extends Vue {
     color: #999;
     font-size: 16px;
     font-weight: normal;
-}
-.jilu {
-    overflow-y: auto;
-    height: 600px;
-    margin-top: 20px;
-}
-.jilu::-webkit-scrollbar {
-    display: none;
-}
-
-@media (max-height: 800px) {
-    .jilu {
-        overflow-y: auto;
-        height: 570px;
-        margin-top: 20px;
-    }
-    .jilu::-webkit-scrollbar {
-        display: none;
-    }
-}
-
-@media (max-height: 700px) {
-    .jilu {
-        overflow-y: auto;
-        height: 500px;
-        margin-top: 20px;
-    }
-}
-@media (max-height: 600px) {
-    .jilu {
-        overflow-y: auto;
-        height: 400px;
-        margin-top: 20px;
-    }
 }
 </style>

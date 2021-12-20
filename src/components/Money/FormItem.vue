@@ -49,14 +49,12 @@
 <style lang="scss" scoped>
     .formItem{
         font-size: 14px;
-        padding-left: 16px;
         display: flex;
         align-items: center;
-        margin-top: 5px;
-        padding-bottom: 8px;
+        padding: 8px 0px 8px 16px;
         border-bottom: 1px solid #e6e6e6;
         .name{
-            padding-right: 16px;
+            padding-right: 12px;
             font-weight: bold;
         }
         input{
@@ -67,6 +65,7 @@
                 border-radius: 3px;
                 height: 30px;
                 margin-right: 16px;
+                padding-left: 8px;
             }
             &.date{
                 border: 1px solid #ddd;
