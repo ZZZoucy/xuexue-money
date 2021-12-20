@@ -12,10 +12,6 @@
                 <span class="zhiding">置顶</span>
                 <span class="aticle">学会理财—看看基金达人怎么说？</span>
             </div>
-            <div>
-                <span class="zhiding">置顶</span>
-                <span class="aticle">xxxxxx</span>
-            </div>
         </main>
         <footer class="community-footer">
             <div class="content">
@@ -112,7 +108,7 @@
     width: 100%;
 }
 .community-main{
-    height: 138px;
+    height: 138px - 56px;
 }
 .community-main div{
     margin: 16px;
