@@ -6,7 +6,8 @@
             </div>
             <p class="me-name">Chayym</p>
         </header>
-        <main>
+        <div class="chang">常用功能</div>
+        <!-- <main>
             <router-link to="/statistics" class="me-statistics">
                 <div class="bill">
                     <span>账单</span>
@@ -21,7 +22,42 @@
                     <Icon name="right" />
                 </div>
             </router-link>
-        </footer>
+        </footer> -->
+        <main class="me-main">
+            <ul class="me-ul">
+                <li>
+                    <router-link to="/statistics">
+                        <img height="50px" src="../assets/账本.png"/>
+                        <p>我的账单</p> 
+                    </router-link>
+                </li> 
+                <li>
+                    <router-link to="/labels">
+                        <img height="50px" src="../assets/标签.png"/>
+                        <p>标签管理</p>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/community">
+                        <img height="50px" src="../assets/理财.png"/>
+                        <p>理财</p>
+                    </router-link>
+                </li>
+                <li>
+                    <a href="https://www.zhihu.com/people/tian-cai-z-70" target="_blank">
+                        <img height="50px" src="../assets/知乎.png"/>
+                        <p>作者知乎</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/ZZZoucy" target="_blank">
+                        <img height="50px" src="../assets/github1.png"/>
+                        <p>作者Github</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </main>
     </layout>
 </template>
 
@@ -31,9 +67,8 @@ export default {};
 
 <style scoped>
 .me-header {
-    height: 200px;
+    height: 170px;
     width: 100%;
-    background-color: #b7dcd3;
     position: relative;
 }
 .me-avatar {
@@ -46,7 +81,7 @@ export default {};
     left: 50%;
     transform: translate(-50%, -50%);
 }
-img{
+.me-avatar img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -57,11 +92,11 @@ img{
 }
 .me-name {
     position: absolute;
-    top: 80%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 16px;
-    color: white;
+    font-size: 18px;
+    color: black;
     font-weight: bold;
 }
 .me-statistics {
@@ -85,7 +120,6 @@ img{
     justify-content: space-between;
     margin: 10px 32px;
 }
-
 .me-tables {
     font-weight: bold;
     min-height: 44px;
@@ -94,7 +128,41 @@ img{
     justify-content: space-between;
     padding: 10px 32px;
 }
-.jieyu {
-    color: #df110e;
+
+.me-main{
+    /* border: 1px solid red; */
+    width: 100%;
+    margin-top: 12px;
+}
+.chang{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 0px 0px 16px;
+    color: #999;
+}
+.me-ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.me-ul li{
+    background-color: #f3f3f1;
+    border-radius: 12px;
+    padding: 12px 0px;
+    width: 26.55555%;
+    margin: 14px;
+    margin-top: 0px; 
+}
+.me-ul li p{
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 2px;
+}
+.me-ul li .img{
+    width: 100px;
+    height: 100px;
 }
 </style>

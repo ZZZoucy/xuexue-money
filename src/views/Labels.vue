@@ -2,7 +2,7 @@
     <Layout>
         <div class="navBar">
             <Icon class="leftIcon" name="left" @click="goBack"/>
-            <sapn class="labels-header">标签管理</sapn>
+            <span class="labels-header">标签管理</span>
             <span class="rightIcon"/>
         </div>
         <div class="tags">
