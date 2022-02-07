@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import { component } from "vue/types/umd";
-import Home from "@/views/Home.vue";
 import Money from "@/views/Money.vue";
 import Labels from "@/views/Labels.vue";
 import EditLabel from "@/views/EditLabel.vue";
@@ -10,17 +9,14 @@ import NotFound from "@/views/NotFound.vue";
 import Me from "@/views/Me.vue";
 import Detail from "@/views/Detail.vue";
 import Community from "@/views/Community.vue";
+import Financial from "@/views/Financial.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
     {
         path: "/",
-        redirect: "/home",
-    },
-    {
-        path: "/home",
-        component: Home,
+        redirect: "/detail",
     },
     {
         path: "/money",
@@ -41,6 +37,10 @@ const routes = [
     {
         path: "/community",
         component: Community,
+    },
+    {
+        path: "/financial",
+        component: Financial,
     },
     {
         path: "/me",

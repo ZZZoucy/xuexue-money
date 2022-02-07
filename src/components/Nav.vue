@@ -13,9 +13,9 @@
             <Icon name="jia" />
             <p>记一笔</p>
         </router-link>
-        <router-link to="/community" class="item" active-class="selected">
-            <Icon name="community" />
-            社区
+        <router-link to="/financial" class="item" active-class="selected">
+            <Icon name="financial" />
+            理财
         </router-link>
         <router-link to="/me" class="item" active-class="selected">
             <Icon name="me" />
@@ -54,9 +54,9 @@ nav {
     > .item.selected {
         color: $color-highlight;
     }
-    .write{
+    .write {
         position: relative;
-        .icon{
+        .icon {
             position: absolute;
             top: -30%;
             left: 25%;
@@ -66,9 +66,9 @@ nav {
             height: 44px;
             padding: 8px;
         }
-        div{
+        div {
             position: absolute;
-            border: 1px solid ;
+            border: 1px solid;
             border-color: #ccc #ccc transparent #ccc;
             border-radius: 50%;
             width: 54px;
@@ -76,8 +76,8 @@ nav {
             top: -38%;
             left: 19%;
         }
-        div::after{
-            content:'';
+        div::after {
+            content: "";
             position: absolute;
             border-radius: 50%;
             background: white;
@@ -85,7 +85,7 @@ nav {
             height: 49px;
             top: 7%;
         }
-        p{
+        p {
             position: absolute;
             bottom: 6%;
         }
