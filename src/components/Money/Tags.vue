@@ -1,7 +1,12 @@
 <template>
     <div class="tags">
+        <!-- <div class="new"></div> -->
         <div class="new">
             <button @click="createTag">新增标签</button>
+            &nbsp;&nbsp;&nbsp;
+            <router-link to="/labels">
+                <button>标签管理</button>
+            </router-link>
         </div>
         <ul class="current">
             <li v-for="tag in tagList" :key="tag.id" @click="toggle(tag)" :class="{ selected: selectedTags.indexOf(tag) >= 0 }">{{ tag.name }}</li>
