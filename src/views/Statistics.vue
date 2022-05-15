@@ -8,25 +8,9 @@
             </span>
         </div>
         <div class="chart-wrapper" ref="chartWrapper">
+            <!-- :options 在 Chart 组件里接收一下 -->
             <Chart class="chart" :options="chartOptions" />
         </div>
-        <!-- <ol v-if="groupedList.length > 0">
-            <li v-for="(group, index) in groupedList" :key="index">
-                <h3 class="title">
-                    {{ beautify(group.title) }} <span>￥{{ group.total }}</span>
-                </h3>
-                <ol>
-                    <li v-for="item in group.items" :key="item.id" class="record">
-                        <span>{{ tagString(item.tags) }}</span>
-                        <span class="notes">{{ item.notes }}</span>
-                        <span>￥{{ item.amount }} </span>
-                    </li>
-                </ol>
-            </li>
-        </ol> -->
-        <!-- <div v-else class="noResult">
-            目前没有相关记录
-        </div> -->
     </Layout>
 </template>
 
@@ -45,46 +29,32 @@ import day from "dayjs";
     components: { Tabs, Chart },
 })
 export default class Statistic extends Vue {
-    // tagString(tags: Tag[]) {
-    //     return tags.length === 0 ? "无" : tags.map((t) => t.name).join("，");
-    // }
+    // 让图表一进入就显示到最近一个日期
     mounted() {
         const div = this.$refs.chartWrapper as HTMLDivElement;
         div.scrollLeft = div.scrollWidth;
     }
 
-    // beautify(string: string) {
-    //     const day = dayjs(string);
-    //     const now = dayjs();
-    //     if (day.isSame(now, "day")) {
-    //         return "今天";
-    //     } else if (day.isSame(now.subtract(1, "day"), "day")) {
-    //         return "昨天";
-    //     } else if (day.isSame(now.subtract(2, "day"), "day")) {
-    //         return "前天";
-    //     } else if (day.isSame(now, "year")) {
-    //         return day.format("M月D日");
-    //     } else {
-    //         return day.format("YYYY年M月D日");
-    //     }
-    // }
-
+    // 计算函数，计算出最近30天的数据，便于下面用于chart图表的数据显示
     get keyValueList() {
         const today = new Date();
         const array = [];
         for (let i = 0; i <= 29; i++) {
-            // this.recordList = [{date:7.3, value:100}, {date:7.2, value:200}]
+            // subtract 是 dayjs 的API，就是用 当前的时间 减去 i天，得到相应的30天
             const dateString = day(today)
                 .subtract(i, "day")
                 .format("YYYY-MM-DD");
+            // 根据记录组的 date时间 来找相对应的 total金额
             const found = _.find(this.groupedList, {
                 title: dateString,
             });
+            // 把每一组日期和金额 push 到 数组 中
             array.push({
                 key: dateString,
                 value: found ? found.total : 0,
             });
         }
+        // 对日期进行一个比较排序，最新日期在最右边
         array.sort((a, b) => {
             if (a.key > b.key) {
                 return 1;
@@ -96,43 +66,57 @@ export default class Statistic extends Vue {
         });
         return array;
     }
+    // chart属性
     get chartOptions() {
         const keys = this.keyValueList.map((item) => item.key);
         const values = this.keyValueList.map((item) => item.value);
         return {
+            // 横轴两头左右贴近头
             grid: {
                 left: 0,
                 right: 0,
             },
+            // 横坐标
             xAxis: {
                 type: "category",
                 data: keys,
+                // 刻度和圆点对齐
                 axisTick: { alignWithLabel: true },
+                // 刻度线颜色
                 axisLine: { lineStyle: { color: "#666" } },
+                // 刻度标签的相关设置
                 axisLabel: {
+                    // 刻度标签的内容格式
                     formatter: function(value: string, index: number) {
+                        // 去掉前5个字符，也就是 YYYY-，所以最后显示的只有 MM-DD
                         return value.substr(5);
                     },
                 },
             },
+            // 纵坐标
             yAxis: {
                 type: "value",
                 show: false,
             },
+            // 圆点
             series: [
                 {
                     symbol: "circle",
+                    // 圆点大小
                     symbolSize: 12,
+                    // 折线样式
                     itemStyle: { borderWidth: 1, color: "#66a596", borderColor: "#66a596" },
-                    // lineStyle: {width: 10},
                     data: values,
                     type: "line",
                 },
             ],
+            // 提示框 点击小圆点可以显示数值
             tooltip: {
                 show: true,
                 triggerOn: "click",
+                // 提示框位置
                 position: "top",
+                // {c} 表示提示框只显示数值
                 formatter: "{c}",
             },
         };
@@ -179,34 +163,11 @@ export default class Statistic extends Vue {
 </script>
 
 <style lang="scss" scoped>
-/* .noResult {
-    padding: 16px;
-    text-align: center;
-}
-%item {
-    padding: 8px 16px;
-    line-height: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-}
-.title {
-    @extend %item;
-}
-.record {
-    background: white;
-    border-bottom: 1px solid #eee;
-    @extend %item;
-}
-.notes {
-    margin-right: auto;
-    margin-left: 16px;
-    color: #999;
-} */
 .chart {
     width: 430%;
     &-wrapper {
         overflow: auto;
+        /* 隐藏滚动条 */
         &::-webkit-scrollbar {
             display: none;
         }

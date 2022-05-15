@@ -18,6 +18,7 @@ const store = new Vuex.Store({
         setCurrentTag(state, id: string) {
             state.currentTag = state.tagList.filter((t) => t.id === id)[0];
         },
+        // 编辑标签 更新标签
         updateTag(state, payload: { id: string; name: string }) {
             const { id, name } = payload;
             const idList = state.tagList.map((item) => item.id);
@@ -26,6 +27,7 @@ const store = new Vuex.Store({
                 if (names.indexOf(name) >= 0) {
                     window.alert("标签名重复了");
                 } else {
+                    // filter 过滤器 一定会返回一个数组
                     const tag = state.tagList.filter((item) => item.id === id)[0];
                     tag.name = name;
                     store.commit("saveTags");
@@ -33,6 +35,7 @@ const store = new Vuex.Store({
             }
         },
         removeTag(state, id: string) {
+            // 根据 id 找到该标签在标签列表中的 index下标
             let index = -1;
             for (let i = 0; i < state.tagList.length; i++) {
                 if (state.tagList[i].id === id) {
@@ -48,13 +51,18 @@ const store = new Vuex.Store({
                 window.alert("删除失败");
             }
         },
+        // 获取记录
         fetchRecords(state) {
             state.recordList = JSON.parse(window.localStorage.getItem("recordList") || "[]") as RecordItem[];
         },
         createRecord(state, record: RecordItem) {
+            // 深拷贝之前的记录
             const record2 = clone(record);
+            // 再给记录创建时间
             record2.createdAt = record2.createdAt || new Date().toISOString();
+            // 将创建好时间的记录再添加到记录列表中
             state.recordList.push(record2);
+            // 触发保存记录函数
             store.commit("saveRecords");
         },
         saveRecords(state) {
@@ -69,6 +77,7 @@ const store = new Vuex.Store({
                 store.commit("createTag", "行");
             }
         },
+        // 新建标签
         createTag(state, name: string) {
             state.createTagError = null;
             const names = state.tagList.map((item) => item.name);

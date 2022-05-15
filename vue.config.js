@@ -1,4 +1,6 @@
-/* eslint-disable */
+/* eslint-disable */ // 解决 eslint 报错
+// 使用svg-sprite-loader 引入 icon 的配置文件
+// 这个文件如果目前无法全部理解，网上搜来直接复用即可
 
 const path = require("path");
 
@@ -17,6 +19,7 @@ module.exports = {
             .loader("svg-sprite-loader")
             .options({ extract: false }) // extract: false 不要解析文件
             .end();
+        // 配置插件
         config.plugin("svg-sprite").use(require("svg-sprite-loader/plugin"), [{ plainSprite: true }]);
         config.module.rule("svg").exclude.add(dir); // 其他 svg loader 排除 icons 目录
     },

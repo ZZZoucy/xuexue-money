@@ -27,7 +27,7 @@
                     <img src="../assets/学基础保险课.jpg" alt="学基础保险课" />
                     <div class="right">
                         <h4>学基础保险课</h4>
-                        <p>最全保险避坑指南，自己也能买“对”</p>
+                        <p>最全保险避坑指南</p>
                         <span class="count1">共12讲</span><span class="count2">128元</span>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     <img src="../assets/基金高阶训练营.jpg" alt="基金高阶训练营" />
                     <div class="right">
                         <h4>基金高阶训练营</h4>
-                        <p>提收益，降风险，让你成为基金达人</p>
+                        <p>提收益，降风险，成为基金达人</p>
                         <span class="count1">共6讲</span><span class="count2">198元</span>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ export default {
     left: 10px;
 }
 .financial-footer .classes div {
-    margin: 10px 1px 40px 10px;
+    margin: 10px 1px 40px 0px;
 }
 .financial-footer .classes div h4 {
     font-weight: bold;

@@ -1,5 +1,6 @@
 <template>
     <nav>
+        <!-- active-class 路由激活 ： 意思就是选中该路由的时候高亮 -->
         <router-link to="/detail" class="item" active-class="selected">
             <Icon name="money" />
             明细
@@ -31,8 +32,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* css/sass可以用 “～@/目录名” 的方式引入文件（ @=src ） */
 @import "~@/assets/style/helper.scss";
 nav {
+    /* @extend 继承 */
     @extend %outerShadow;
     display: flex;
     flex-direction: row;
@@ -52,6 +55,7 @@ nav {
         }
     }
     > .item.selected {
+        /* $ 变量 */
         color: $color-highlight;
     }
     .write {

@@ -8,8 +8,10 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 type DataSourceItem = { text: string; value: string };
+// 装饰器（组件） 就是 告诉vue export...这里代表的是一个组件
 @Component
 export default class Tabs extends Vue {
+    // @Prop装饰器 接收参数
     @Prop({ required: true, type: Array }) dataSource!: DataSourceItem[];
     @Prop(String) readonly value!: string;
     @Prop(String) classPrefix?: string;

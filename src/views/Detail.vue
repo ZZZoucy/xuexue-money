@@ -30,6 +30,7 @@
 </template>
 
 <script lang="ts">
+/* JS/TS 可以用 “@/目录名” 的方式引入文件（ @=src ） */
 import TypeSection from "@/components/common/TypeSection/TypeSection.vue";
 import CategorySection from "@/views/Home/childComps/Money/CategorySection.vue";
 import MoneyKey from "@/components/common/MoneyKey/MoneyKey.vue";
@@ -46,22 +47,16 @@ import _ from "lodash";
     components: { TypeSection, Tabs, MoneyKey },
 })
 export default class Detail extends Vue {
-    // getCategory(category: string) {
-    //     this.category = category;
-    // }
     tagString(tags: Tag[]) {
         return tags.length === 0 ? "无" : tags.map((t) => t.name).join("，");
     }
-    // mounted() {
-    //     const div = this.$refs.chartWrapper as HTMLDivElement;
-    //     div.scrollLeft = div.scrollWidth;
-    // }
-
+    // 统一时间显示格式 函数
     beautify(string: string) {
         const day = dayjs(string);
         const now = dayjs();
         if (day.isSame(now, "day")) {
             return "今天";
+            // subtract(1, "day") 意思是减一天
         } else if (day.isSame(now.subtract(1, "day"), "day")) {
             return "昨天";
         } else if (day.isSame(now.subtract(2, "day"), "day")) {
@@ -104,18 +99,27 @@ export default class Detail extends Vue {
     get recordList() {
         return (this.$store.state as RootState).recordList;
     }
+
+    // 日期排序分组函数
     get groupedList() {
         const { recordList } = this;
-
+        // 对记录数组按创建时间进行排序 得到 newList
         const newList = clone(recordList)
             .filter((r) => r.type === this.type)
             .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
         if (newList.length === 0) {
             return [];
         }
+
+        // 对数组按时间进行分组 同一天放在一组里
         type Result = { title: string; total?: number; items: RecordItem[] }[];
+        // result 放结果，[{title:同一时间，items:[记录1,记录2...]}, {title，items}]
         const result: Result = [{ title: dayjs(newList[0].createdAt).format("YYYY-MM-DD"), items: [newList[0]] }];
+        // 遍历排过序的记录列表
         for (let i = 1; i < newList.length; i++) {
+            // 当前项跟items里的最后一项是否为同一天
+            // 如果是同一天，就放进items
+            // 如果不是同一天，就放进一个新的对象中
             const current = newList[i];
             const last = result[result.length - 1];
             if (dayjs(last.title).isSame(dayjs(current.createdAt), "day")) {
@@ -124,6 +128,7 @@ export default class Detail extends Vue {
                 result.push({ title: dayjs(current.createdAt).format("YYYY-MM-DD"), items: [current] });
             }
         }
+        // 遍历分组后的记录，将一组的 amount金额 计算出一个 总和sum
         result.map((group) => {
             group.total = group.items.reduce((sum, item) => {
                 return sum + item.amount;
