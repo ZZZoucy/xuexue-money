@@ -31,9 +31,6 @@
 
 <script lang="ts">
 /* JS/TS 可以用 “@/目录名” 的方式引入文件（ @=src ） */
-import TypeSection from "@/components/common/TypeSection/TypeSection.vue";
-import CategorySection from "@/views/Home/childComps/Money/CategorySection.vue";
-import MoneyKey from "@/components/common/MoneyKey/MoneyKey.vue";
 import day from "dayjs";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
@@ -44,7 +41,7 @@ import clone from "@/lib/clone";
 import _ from "lodash";
 
 @Component({
-    components: { TypeSection, Tabs, MoneyKey },
+    components: { Tabs },
 })
 export default class Detail extends Vue {
     tagString(tags: Tag[]) {
