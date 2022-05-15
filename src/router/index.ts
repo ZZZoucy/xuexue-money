@@ -8,7 +8,6 @@ import Statistics from "@/views/Statistics.vue";
 import NotFound from "@/views/NotFound.vue";
 import Me from "@/views/Me.vue";
 import Detail from "@/views/Detail.vue";
-import Community from "@/views/Community.vue";
 import Financial from "@/views/Financial.vue";
 
 Vue.use(VueRouter);
@@ -33,10 +32,6 @@ const routes = [
     {
         path: "/statistics",
         component: Statistics,
-    },
-    {
-        path: "/community",
-        component: Community,
     },
     {
         path: "/financial",
