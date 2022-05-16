@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/xuexue-bookkeeping/precache-manifest.3ff8058a94457c468c29b7ad8d7f3a48.js"
+  "/xuexue-bookkeeping/precache-manifest.634686c9cf5805de44070480a8f5aa38.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "xuexue-money-vue"});

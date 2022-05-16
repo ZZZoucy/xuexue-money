@@ -1,13 +1,17 @@
 <template>
     <div class="a">
         <!-- 支出收入按钮 -->
+        <!-- .sync修饰符，是一个语法糖，它可以快速实现组件间的通信 -->
+        <!-- classPrefix 代表 给 class 加前缀 -->
         <Tabs class="tabs" class-prefix="type" :data-source="recordTypeList" :value.sync="type" />
         <section class="icon_div" v-if="groupedList.length === 0">
             <Icon name="none" />
             <money-key />
         </section>
         <section class="jilu">
+            <!-- 只有当记录列表长度不为0时，才显示 -->
             <ol v-if="groupedList.length !== 0">
+                <!-- 遍历记录组列表 -->
                 <li v-for="(group, index) in groupedList" :key="index">
                     <h3 class="title">
                         {{ beautify(group.title) }} <span>￥{{ group.total }}</span>
@@ -47,6 +51,7 @@ export default class Detail extends Vue {
     tagString(tags: Tag[]) {
         return tags.length === 0 ? "无" : tags.map((t) => t.name).join("，");
     }
+
     // 统一时间显示格式 函数
     beautify(string: string) {
         const day = dayjs(string);
@@ -65,34 +70,7 @@ export default class Detail extends Vue {
         }
     }
 
-    get keyValueList() {
-        const today = new Date();
-        const array = [];
-        for (let i = 0; i <= 29; i++) {
-            // this.recordList = [{date:7.3, value:100}, {date:7.2, value:200}]
-            const dateString = day(today)
-                .subtract(i, "day")
-                .format("YYYY-MM-DD");
-            const found = _.find(this.groupedList, {
-                title: dateString,
-            });
-            array.push({
-                key: dateString,
-                value: found ? found.total : 0,
-            });
-        }
-        array.sort((a, b) => {
-            if (a.key > b.key) {
-                return 1;
-            } else if (a.key === b.key) {
-                return 0;
-            } else {
-                return -1;
-            }
-        });
-        return array;
-    }
-
+    // 获取记录列表
     get recordList() {
         return (this.$store.state as RootState).recordList;
     }

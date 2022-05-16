@@ -19,7 +19,7 @@ git commit -m 'deploy'
 # 部署到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
-# 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:ZZZoucy/xuexue-bookkeeping.git main:gh-pages
+# 部署到 https://<USERNAME>.github.io/<REPO>git@github.com:ZZZoucy/xuexue-bookkeeping.git
+git push -f git@github.com:ZZZoucy/xuexue-money.git main:gh-pages
 
 cd -
